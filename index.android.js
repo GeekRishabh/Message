@@ -5,6 +5,7 @@ import {observer} from 'mobx-react/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Micon from 'react-native-vector-icons/MaterialIcons';
 
+
 export default class Message extends Component {
 
   constructor(props) {
@@ -42,7 +43,7 @@ export default class Message extends Component {
       // msgStore.swipeScreen(two);
     }
   }
-  
+
   render() {
     return (
 
@@ -97,6 +98,7 @@ export default class Message extends Component {
                                           }}
                               > 91 </Text>
                               <TextInput
+                                    keyboardType={'numeric'}
                                     autoCapitalize={'none'}
                                     maxLength={10}
                                     placeholder='Phone Number'
@@ -115,6 +117,7 @@ export default class Message extends Component {
                               > Ok </Button>
 
                           </View>
+
 
 
 
