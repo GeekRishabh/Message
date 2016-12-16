@@ -48,13 +48,14 @@ export default class Message extends Component {
     return (
 
         <Container>
-
+              <Image source={require('./Images/l1.png')} style={styles.logoImage}>
                 <Header>
                     <Button transparent>
                         <Icon name='whatsapp' style={{fontSize:25, color:'white'}}/>
                     </Button>
                     <Title style={{color: 'white'}}>Verify your phone number</Title>
                 </Header>
+              </Image>
                 <Content style={{backgroundColor: '#fff',width:400, height: 400}}>
                   <Text> Enter Your Mobile Number: </Text>
 
