@@ -5,6 +5,9 @@ import {observer} from 'mobx-react/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Micon from 'react-native-vector-icons/MaterialIcons';
 
+import store from './js/store/store'
+
+@observer
 export default class Message extends Component {
 
   constructor(props) {
@@ -15,33 +18,21 @@ export default class Message extends Component {
 
   }
 
-
-  componentDidMount() {
-  }
-
-  onChanged(text){
-     var newText = '';
-     var numbers = '0123456789';
-     if(text.length < 1){
-
-       this.setState({ mobile: '' });
-     }
-     for (var i=0; i < text.length; i++) {
-          if(numbers.indexOf(text[i]) > -1 ) {
-               newText = newText + text[i];
-          }
-          this.setState({ mobile: newText });
-      }
-  }
-
-  onSubmit(){
+  
+  sendMobile(){
     if(this.state.mobile.length < 10){
-      alert("Invalid mobile number");
-      this.setState({ mobile: '' });
-      // msgStore.addMobileNumber(this.state.mobile);
-      // msgStore.swipeScreen(two);
+      Alert.alert("Invalid mobile number");
+      
+      }
+      else
+      {
+      store.getMobile(this.state.mobile);
+      this.setState({
+      mobile: '' 
+            })    
     }
   }
+
   
   render() {
     return (
@@ -100,12 +91,15 @@ export default class Message extends Component {
                                     autoCapitalize={'none'}
                                     maxLength={10}
                                     placeholder='Phone Number'
-                                    value={this.state.mobile}
-                                    onChangeText={(mobile) => this.onChanged(mobile)}
                                     style={{flex:6,alignItems:'center',alignSelf:'center',justifyContent:'center',textAlign:'center'}}
+                                    onChangeText={(text) => this.setState({mobile: text})}
+                                    value={this.state.mobile}
+                                    onSubmitEditing={() => this.sendMobile()}
+                                    blurOnSubmit={false}
+
                               />
                               <Button primary
-                                  onPress={() => this.onSubmit()}
+                                  onPress={() => this.sendMobile()}
                                   style={{flex:1.5,
                                           alignItems:'center',
                                           alignSelf:'center',
