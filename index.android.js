@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput, Image } from 'react-native';
-import { Container, Header, Title, Content, Button, Footer,Input, List, ListItem } from 'native-base';
+import { Container, Header, Title, Content, Button, Footer,Input, List, ListItem, CardItem, Card,InputGroup } from 'native-base';
 import {observer} from 'mobx-react/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -48,31 +48,51 @@ export default class Message extends Component {
     return (
 
         <Container>
-              <Image source={require('./Images/l1.png')} style={styles.logoImage}>
-                <Header>
+
+                <Header style={{backgroundColor:'#1E4544'}}>
+
                     <Button transparent>
                         <Icon name='whatsapp' style={{fontSize:25, color:'white'}}/>
                     </Button>
                     <Title style={{color: 'white'}}>Verify your phone number</Title>
+
                 </Header>
-              </Image>
+
                 <Content style={{backgroundColor: '#fff',width:400, height: 400}}>
-                  <Text> Enter Your Mobile Number: </Text>
+                <Card>
+                      <CardItem>
+                          <Text>
+                              A one time SMS will be sent to verify your mobile number. Carrier SMS charges may apply.
+                          </Text>
+                      </CardItem>
+                      <CardItem>
+                          <Text>
+                              Please confirm your country code and enter your phone number.
+                          </Text>
+                          <InputGroup borderType='underline' >
+
+                            <Text>India</Text>
+                          </InputGroup>
+                          <TextInput
+                            autoCapitalize={'none'}
+                            maxLength={10}
+                            placeholder='Phone Number'
+                            value={this.state.mobile}
+                            onChangeText={(mobile) => this.onChanged(mobile)}
+
+                          />
+                          <Button primary
+                          onPress={() => this.onSubmit()}
+                          style={{marginTop:10 ,marginBottom:10 ,marginLeft:100 ,padding:5,justifyContent:'flex-end', backgroundColor:'#D1D1D1'}}>
+                            Ok
+                          </Button>
+
+                      </CardItem>
+                  </Card>
 
 
-                  <TextInput
-                    autoCapitalize={'none'}
-                    maxLength={10}
-                    placeholder='Mobile Number'
-                    value={this.state.mobile}
-                    onChangeText={(mobile) => this.onChanged(mobile)}
 
-                  />
-                  <Button primary
-                  onPress={() => this.onSubmit()}
-                  style={{marginTop:10 ,marginBottom:10 ,marginLeft:100 ,padding:5,justifyContent:'flex-end'}}>
-                      Enter
-                  </Button>
+
 
 
                 </Content>
