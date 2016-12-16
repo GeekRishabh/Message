@@ -1,0 +1,32 @@
+	mobile otp verified bool
+
+
+	getcontact ()
+
+	{}
+
+
+	store > view / screen sharing 
+
+	AuthStore class
+	{
+    mobile no 
+    device id 
+
+	}
+
+	mongodb
+
+	featherjs >user collection
+
+	 mobile no 
+    devices id 
+    otp
+    is verified
+
+	 channelname >id
+	 channel mssges > message id from
+
+
+	 
+

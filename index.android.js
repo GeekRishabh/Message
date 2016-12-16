@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput, Image } from 'react-native';
+import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput, Image ,Alert} from 'react-native';
 import { Container, Header, Title, Content, Button, Footer,Input, List, ListItem, CardItem, Card,InputGroup } from 'native-base';
 import {observer} from 'mobx-react/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -42,9 +42,7 @@ export default class Message extends Component {
       // msgStore.swipeScreen(two);
     }
   }
-  //<Image source={require('./Images/l1.png')} style={styles.logoImage}>
-  //</Image>
-
+  
   render() {
     return (
 
