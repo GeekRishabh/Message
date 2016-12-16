@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput, Image } from 'react-native';
+import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput } from 'react-native';
 import { Container, Header, Title, Content, Button, Footer,Input, List, ListItem } from 'native-base';
 import {observer} from 'mobx-react/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -41,8 +41,7 @@ export default class Message extends Component {
       msgStore.swipeScreen(two);
     }
   }
-  //<Image source={require('./Images/l1.png')} style={styles.logoImage}>
-  //</Image>
+
 
   render() {
     return (
@@ -51,9 +50,9 @@ export default class Message extends Component {
 
                 <Header>
                     <Button transparent>
-                        <Icon name='whatsapp' style={{fontSize:25, color:'white'}}/>
+                        <Icon name="home" style={{fontSize:25, color:'white'}}/>
                     </Button>
-                    <Title style={{color: 'white'}}>Verify your phone number</Title>
+                    <Title style={{color: 'white'}}>MyChatApp</Title>
                 </Header>
                 <Content style={{backgroundColor: '#fff',width:400, height: 400}}>
                   <Text> Enter Your Mobile Number: </Text>
