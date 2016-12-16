@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput, Image } from 'react-native';
+import { TouchableHighlight, Text, View ,AppRegistry,StyleSheet,TextInput, Image ,Alert} from 'react-native';
 import { Container, Header, Title, Content, Button, Footer,Input, List, ListItem, CardItem, Card,InputGroup } from 'native-base';
 import {observer} from 'mobx-react/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import store from './js/store/store'
 
 export default class Message extends Component {
 
@@ -14,36 +16,21 @@ export default class Message extends Component {
 
   }
 
-
-  componentDidMount() {
-  }
-
-  onChanged(text){
-     var newText = '';
-     var numbers = '0123456789';
-     if(text.length < 1){
-
-       this.setState({ mobile: '' });
-     }
-     for (var i=0; i < text.length; i++) {
-          if(numbers.indexOf(text[i]) > -1 ) {
-               newText = newText + text[i];
-          }
-          this.setState({ mobile: newText });
-      }
-  }
-
-  onSubmit(){
+  
+  sendMobile(){
     if(this.state.mobile.length < 10){
-      alert("Invalid mobile number");
-      this.setState({ mobile: '' });
-      msgStore.addMobileNumber(this.state.mobile);
-      msgStore.swipeScreen(two);
+      Alert.alert("Invalid mobile number");
+      
+      }
+      else
+      {
+      store.getMobile(this.state.mobile);
+      this.setState({
+      mobile: '' 
+            })    
     }
   }
-  //<Image source={require('./Images/l1.png')} style={styles.logoImage}>
-  //</Image>
-
+  
   render() {
     return (
 
@@ -74,15 +61,15 @@ export default class Message extends Component {
                             <Text>India</Text>
                           </InputGroup>
                           <TextInput
-                            autoCapitalize={'none'}
-                            maxLength={10}
-                            placeholder='Phone Number'
+                            style={{width:150,margin:10, alignItems:'stretch', borderWidth:1}} 
+                            onChangeText={(text) => this.setState({mobile: text})}
                             value={this.state.mobile}
-                            onChangeText={(mobile) => this.onChanged(mobile)}
+                             onSubmitEditing={() => this.sendMobile()}
+                                  blurOnSubmit={false}
 
                           />
                           <Button primary
-                          onPress={() => this.onSubmit()}
+                          onPress={() => this.sendMobile()}
                           style={{marginTop:10 ,marginBottom:10 ,marginLeft:100 ,padding:5,justifyContent:'flex-end', backgroundColor:'#D1D1D1'}}>
                             Ok
                           </Button>
