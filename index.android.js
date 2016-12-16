@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import store from './js/store/store'
 
+@observer
 export default class Message extends Component {
 
   constructor(props) {

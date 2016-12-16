@@ -2,7 +2,7 @@ import {observable, computed} from 'mobx';
 
 class   Store{
 
- mobileList = [ ]; 
+ @observable  mobileList = [ ]; 
 
     getMobile(mobile) {
         console.log(mobile);
